@@ -15,11 +15,12 @@ app.use(cors());
 
 //Connect to DB
 const mongoURI =
-  "YOUR_MONGO_URI";
+  "mongodb://127.0.0.1:27017/imgs";
+mongoose.connect("mongodb://127.0.0.1:27017/imgs", { useNewUrlParser: true });
 
-const conn = mongoose.createConnection(mongoURI);
+const conn = mongoose.connection;
+// const conn = mongoose.createConnection(mongoURI);
 
-mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 let gfs;
 
@@ -77,6 +78,6 @@ app.get("/:filename", (req, res) => {
   });
 });
 
-const port = 5000;
+const port = 3000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
